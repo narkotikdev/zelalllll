@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>💖 ALARAMMMMMMM</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+    color: #333;
+    text-align: center;
+    padding: 20px 15px;
+    box-sizing: border-box;
+    position: relative;
+    background-color: #f8f0e3; /* krem rengi */
+  }
+
+  /* Arka plan fotoğrafı, üstte krem transparan katmanla */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.95;
+    filter: blur(6px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(248, 240, 227, 0.6);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .content-wrapper {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    line-height: 1.4;
+    animation: fadeInUp 1.2s ease forwards;
+    max-width: 100%;
+    word-wrap: break-word;
+  }
+
+  .question {
+    font-size: 4rem;
+    margin: 20px 0 35px 0;
+    font-weight: 900;
+    animation: fadeInUp 1.8s ease forwards;
+    color: #ff0055;
+    line-height: 1;
+    max-width: 100%;
+    word-break: break-word;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 15px;
+    animation: fadeInUp 2.4s ease forwards;
+    flex-wrap: wrap;
+    justify-content: center;
+    z-index: 10;
+  }
+
+  button {
+    padding: 28px 60px;
+    font-size: 2.4rem;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgb(0 0 0 / 0.1);
+    transition: transform 0.25s ease;
+    font-weight: 700;
+    color: white;
+    min-width: 240px;
+    flex: 1 1 240px;
+    max-width: 360px;
+    user-select: none;
+  }
+
+  button:active {
+    transform: scale(0.95);
+  }
+
+  .yes-green {
+    background: #27ae60;
+  }
+
+  .no-red {
+    background: #e74c3c;
+  }
+
+  /* Büyük mesaj, başlangıçta görünmez */
+  .big-love-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3.5rem;
+    color: #d81e5b;
+    font-weight: 900;
+    text-align: center;
+    padding: 0 20px;
+    max-width: 90vw;
+    word-wrap: break-word;
+    z-index: 10000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease;
+  }
+
+  /* Gül (emoji) animasyonu */
+  .rose {
+    position: fixed;
+    font-size: 28px;
+    user-select: none;
+    pointer-events: none;
+    animation-name: fall;
+    animation-timing-function: linear;
+    opacity: 0.9;
+    z-index: 9999;
+  }
+
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fall {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(110vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      color: #885b6a;
+    }
+
+    .question {
+      font-size: 3rem;
+      margin: 15px 0 30px 0;
+    }
+
+    button {
+      padding: 20px 45px;
+      font-size: 1.8rem;
+      min-width: 180px;
+      max-width: 270px;
+    }
+
+    .big-love-message {
+      font-size: 2.5rem;
+      padding: 0 15px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="content-wrapper">
+  <h1>
+    Alara, seni tanıdığım günden beri<br />
+    kalbimde ayrı bir yerin var.<br />
+    Seni çok seviyorum ve eğer sen de istersen,<br />
+    bu hikâyeyi birlikte yazmak isterim.
+  </h1>
+
+  <div class="question">BENİMLE ÇIKAR MISIN?</div>
+
+  <div class="buttons">
+    <button class="yes-green">EVET</button>
+    <button class="no-red">EVET</button>
+  </div>
+</div>
+
+<div class="big-love-message" id="bigLoveMessage">💖 ALARA SENİ HERŞEYDEN ÇOK SEVİYORUM 🌹</div>
+
+<audio id="bgMusic" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_ee4507a83a.mp3?filename=romantic-piano-11235.mp3" type="audio/mpeg" />
+  Tarayıcınız ses elementini desteklemiyor.
+</audio>
+
+<script>
+  const buttons = document.querySelectorAll('button');
+  const buttonsDiv = document.querySelector('.buttons');
+  const questionDiv = document.querySelector('.question');
+  const heading = document.querySelector('h1');
+  const bigLoveMessage = document.getElementById('bigLoveMessage');
+  const bgMusic = document.getElementById('bgMusic');
+
+  let roseInterval;
+
+  // Müzik kısık başlat
+  bgMusic.volume = 0.1;  // %10 ses
+  bgMusic.play().catch(() => {
+    // Eğer otomatik oynatma engellenirse,
+    // kullanıcı etkileşiminde başlat
+    document.body.addEventListener('click', () => {
+      bgMusic.play();
+    }, {once: true});
+  });
+
+  function createRose(x, y) {
+    const rose = document.createElement('div');
+    rose.classList.add('rose');
+    rose.style.left = x + 'px';
+    rose.style.top = y + 'px';
+    rose.style.fontSize = (20 + Math.random() * 15) + 'px';
+    rose.style.animationDuration = (3 + Math.random() * 2) + 's';
+    rose.textContent = '🌹';
+    document.body.appendChild(rose);
+
+    setTimeout(() => {
+      rose.remove();
+    }, 5000);
+  }
+
+  function startRoses() {
+  if (roseInterval) return;
+  roseInterval = setInterval(() => {
+    // Her 50ms 3-4 tane gül çıkar
+    for(let i = 0; i < 4; i++) {
+      const x = Math.random() * window.innerWidth;
+      const y = -50 - Math.random() * 50;
+      createRose(x, y);
+    }
+  }, 50);
+}
+
+
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      heading.style.display = 'none';
+      questionDiv.style.display = 'none';
+      buttonsDiv.style.display = 'none';
+
+      bigLoveMessage.style.opacity = '1';
+
+      startRoses();
+
+      // Ses yükselt
+      bgMusic.volume = 1.0;  // %100 ses
+    });
+  });
+</script>
+
+</body>
+</html>
