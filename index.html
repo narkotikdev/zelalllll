@@ -1,282 +1,281 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>💖 ALARAMMMMMMM</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ece'mmmmmm 💗💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;600&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  body {
-    margin: 0;
-    min-height: 100vh;
-    font-family: 'Montserrat', sans-serif;
-    overflow-x: hidden;
-    color: #333;
-    text-align: center;
-    padding: 20px 15px;
-    box-sizing: border-box;
-    position: relative;
-    background-color: #f8f0e3; /* krem rengi */
-  }
-
-  /* Arka plan fotoğrafı, üstte krem transparan katmanla */
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.95;
-    filter: blur(6px);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  body::after {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: rgba(248, 240, 227, 0.6);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .content-wrapper {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
-
-  h1 {
-    font-size: 1.6rem;
-    margin-bottom: 15px;
-    line-height: 1.4;
-    animation: fadeInUp 1.2s ease forwards;
-    max-width: 100%;
-    word-wrap: break-word;
-  }
-
-  .question {
-    font-size: 4rem;
-    margin: 20px 0 35px 0;
-    font-weight: 900;
-    animation: fadeInUp 1.8s ease forwards;
-    color: #ff0055;
-    line-height: 1;
-    max-width: 100%;
-    word-break: break-word;
-  }
-
-  .buttons {
-    display: flex;
-    gap: 15px;
-    animation: fadeInUp 2.4s ease forwards;
-    flex-wrap: wrap;
-    justify-content: center;
-    z-index: 10;
-  }
-
-  button {
-    padding: 28px 60px;
-    font-size: 2.4rem;
-    border: none;
-    border-radius: 40px;
-    cursor: pointer;
-    box-shadow: 0 6px 12px rgb(0 0 0 / 0.1);
-    transition: transform 0.25s ease;
-    font-weight: 700;
-    color: white;
-    min-width: 240px;
-    flex: 1 1 240px;
-    max-width: 360px;
-    user-select: none;
-  }
-
-  button:active {
-    transform: scale(0.95);
-  }
-
-  .yes-green {
-    background: #27ae60;
-  }
-
-  .no-red {
-    background: #e74c3c;
-  }
-
-  /* Büyük mesaj, başlangıçta görünmez */
-  .big-love-message {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 3.5rem;
-    color: #d81e5b;
-    font-weight: 900;
-    text-align: center;
-    padding: 0 20px;
-    max-width: 90vw;
-    word-wrap: break-word;
-    z-index: 10000;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.6s ease;
-  }
-
-  /* Gül (emoji) animasyonu */
-  .rose {
-    position: fixed;
-    font-size: 28px;
-    user-select: none;
-    pointer-events: none;
-    animation-name: fall;
-    animation-timing-function: linear;
-    opacity: 0.9;
-    z-index: 9999;
-  }
-
-  @keyframes fadeInUp {
-    0% {
-      opacity: 0;
-      transform: translateY(20px);
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: url('https://images.unsplash.com/photo-1520975698519-1e0e0b1226f0?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
+      background-size: cover;
+      overflow-x: hidden;
+      color: #fff;
     }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
 
-  @keyframes fall {
-    0% {
-      transform: translateY(0) rotate(0deg);
-      opacity: 1;
+    /* Sadece içerik kısmını saran ana container */
+    #content-wrapper {
+      background: rgba(0,0,0,0.6);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      transition: filter 0.3s ease;
     }
-    100% {
-      transform: translateY(110vh) rotate(360deg);
-      opacity: 0;
-    }
-  }
 
-  @media (max-width: 480px) {
+    /* Buhar efekti sadece content-wrapper için */
+    #content-wrapper.blur {
+      filter: blur(3px);
+    }
+
     h1 {
-      font-size: 1.3rem;
-      margin-bottom: 12px;
-      color: #885b6a;
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.5rem;
+      color: #ffe0f5;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+      margin-bottom: 20px;
     }
 
-    .question {
-      font-size: 3rem;
-      margin: 15px 0 30px 0;
+    .glass-box {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 700px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      margin-top: 20px;
+    }
+
+    .glass-box p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #fbe9f2;
+    }
+
+    .date-box, .day-counter {
+      margin-top: 30px;
+      background: #ffaad480;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #fff;
+      box-shadow: 0 2px 10px #00000050;
+    }
+
+    /* Aşk sözü kartı */
+    .quote-box {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 170, 180, 0.95);
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+      padding: 20px 30px;
+      border-radius: 25px;
+      box-shadow: 0 0 20px 10px rgba(255, 182, 193, 0.8);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+      max-width: 80vw;
+      z-index: 10001;
+      text-align: center;
+      user-select: none;
+    }
+
+    .quote-box.show {
+      opacity: 1;
+      pointer-events: auto;
     }
 
     button {
-      padding: 20px 45px;
-      font-size: 1.8rem;
-      min-width: 180px;
-      max-width: 270px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      padding: 12px 25px;
+      font-size: 1rem;
+      border: none;
+      background-color: #ff7eb3;
+      border-radius: 25px;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s ease;
+      outline: none;
+      user-select: none;
+      position: relative;
+      z-index: 10;
     }
 
-    .big-love-message {
-      font-size: 2.5rem;
-      padding: 0 15px;
+    button:hover { background-color: #ff4f94; }
+
+    /* Buton titreşim animasyonu */
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-8px); }
+      40%, 80% { transform: translateX(8px); }
     }
-  }
-</style>
+
+    button.shake {
+      animation: shake 0.5s;
+    }
+
+    /* Kalp Emojisi Yağmuru */
+    .emoji-heart {
+      position: fixed;
+      top: -50px;
+      font-size: 24px;
+      z-index: 0;
+      animation: fall linear infinite;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(120vh);
+        opacity: 0;
+      }
+    }
+
+    /* ⚡ Ekran Flash Efekti */
+    .flash {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: white;
+      opacity: 0.7;
+      z-index: 9999;
+      animation: flashAnimation 0.4s ease-out;
+      pointer-events: none;
+    }
+
+    @keyframes flashAnimation {
+      from { opacity: 0.8; }
+      to { opacity: 0; }
+    }
+  </style>
 </head>
 <body>
+  <div id="content-wrapper">
+    <h1>Aşkımızın En Güzel Sayfası</h1>
 
-<div class="content-wrapper">
-  <h1>
-    Alara, seni tanıdığım günden beri<br />
-    kalbimde ayrı bir yerin var.<br />
-    Seni çok seviyorum ve eğer sen de istersen,<br />
-    bu hikâyeyi birlikte yazmak isterim.
-  </h1>
+    <div class="glass-box">
+      <p>
+        9 Temmuz 2025, saat 23:30.<br>
+        Bir dijital anıydı ama kalbime gerçek bir iz bıraktı.<br>
+        Her satır sana, her saniye sana yazıldı.<br>
+        Ve bu sayfa da… sırf senin için.
+      </p>
+    </div>
 
-  <div class="question">BENİMLE ÇIKAR MISIN?</div>
+    <div class="date-box">Tanışma Günümüz: 9 Temmuz 2025 — Saat 23:30</div>
+    <div class="day-counter" id="dayCounter">Tanışalı hesaplanıyor...</div>
 
-  <div class="buttons">
-    <button class="yes-green">EVET</button>
-    <button class="no-red">EVET</button>
+    <button id="loveButton">Bana Bir Söz Söyle 💘</button>
+
+    <audio controls autoplay loop>
+      <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3" />
+    </audio>
+<br><br>
+    <footer>© 2025 Narkotik tarafından aşkla kodlandı. 💻💖</footer>
   </div>
-</div>
 
-<div class="big-love-message" id="bigLoveMessage">💖 ALARA SENİ HERŞEYDEN ÇOK SEVİYORUM 🌹</div>
+  <!-- Aşk sözü kartı -->
+  <div class="quote-box" id="quoteBox"></div>
 
-<audio id="bgMusic" loop>
-  <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_ee4507a83a.mp3?filename=romantic-piano-11235.mp3" type="audio/mpeg" />
-  Tarayıcınız ses elementini desteklemiyor.
-</audio>
-
-<script>
-  const buttons = document.querySelectorAll('button');
-  const buttonsDiv = document.querySelector('.buttons');
-  const questionDiv = document.querySelector('.question');
-  const heading = document.querySelector('h1');
-  const bigLoveMessage = document.getElementById('bigLoveMessage');
-  const bgMusic = document.getElementById('bgMusic');
-
-  let roseInterval;
-
-  // Müzik kısık başlat
-  bgMusic.volume = 0.1;  // %10 ses
-  bgMusic.play().catch(() => {
-    // Eğer otomatik oynatma engellenirse,
-    // kullanıcı etkileşiminde başlat
-    document.body.addEventListener('click', () => {
-      bgMusic.play();
-    }, {once: true});
-  });
-
-  function createRose(x, y) {
-    const rose = document.createElement('div');
-    rose.classList.add('rose');
-    rose.style.left = x + 'px';
-    rose.style.top = y + 'px';
-    rose.style.fontSize = (20 + Math.random() * 15) + 'px';
-    rose.style.animationDuration = (3 + Math.random() * 2) + 's';
-    rose.textContent = '🌹';
-    document.body.appendChild(rose);
-
-    setTimeout(() => {
-      rose.remove();
-    }, 5000);
-  }
-
-  function startRoses() {
-  if (roseInterval) return;
-  roseInterval = setInterval(() => {
-    // Her 50ms 3-4 tane gül çıkar
-    for(let i = 0; i < 4; i++) {
-      const x = Math.random() * window.innerWidth;
-      const y = -50 - Math.random() * 50;
-      createRose(x, y);
+  <script>
+    // 💖💗 Kalp yağmuru
+    const emojis = ["💖", "💗"];
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("emoji-heart");
+      heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+      heart.style.fontSize = (Math.random() * 10 + 20) + "px";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
     }
-  }, 50);
-}
+    setInterval(createHeart, 250);
 
+    // ⏱️ Sayacı güncelle
+    function updateFullCounter() {
+      const startDate = new Date("2025-07-09T23:30:00");
+      const now = new Date();
+      const diff = now - startDate;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+      const milliseconds = diff % 1000;
+      document.getElementById("dayCounter").textContent =
+        `Tanışalı ${days} gün, ${hours} saat, ${minutes} dk, ${seconds} sn, ${milliseconds.toString().padStart(3, '0')} ms geçti 💘`;
+    }
+    setInterval(updateFullCounter, 40);
+    updateFullCounter();
 
-  buttons.forEach(button => {
-    button.addEventListener('click', () => {
-      heading.style.display = 'none';
-      questionDiv.style.display = 'none';
-      buttonsDiv.style.display = 'none';
+    // Aşk sözleri dizisi
+    const quotes = [
+      "Senle her saniye başka bir öyküye dönüşüyor.",
+      "Kalbim artık senin Wi-Fi'na bağlı.",
+      "Ellerin yazmasa da, ruhun satır satır içime işliyor.",
+      "Sadece seni düşününce bile gözlerim gülüyor.",
+      "Ruhumun en güzel sayfası sensin.",
+      "Seninle tanıştığım an, zaman durdu…",
+      "Gözlerin benim en huzurlu ekranım.",
+      "Bu kodlar bile seni düşünmeden yazılamıyor.",
+      "Sana yazdığım her satırda bir kalp atışı gizli.",
+      "Sonsuz satır varsa, hepsi sana yazılsın isterim 💗"
+    ];
 
-      bigLoveMessage.style.opacity = '1';
+    // Ekran flash efekti
+    function screenFlash() {
+      const flash = document.createElement("div");
+      flash.classList.add("flash");
+      document.body.appendChild(flash);
+      setTimeout(() => flash.remove(), 400);
+    }
 
-      startRoses();
+    // Buton ve söz gösterme fonksiyonu
+    const loveButton = document.getElementById("loveButton");
+    const quoteBox = document.getElementById("quoteBox");
+    const contentWrapper = document.getElementById("content-wrapper");
 
-      // Ses yükselt
-      bgMusic.volume = 1.0;  // %100 ses
+    loveButton.addEventListener("click", () => {
+      // Ekran ışıldasın
+      screenFlash();
+
+      // Butona titreme animasyonu ekle
+      loveButton.classList.add("shake");
+      setTimeout(() => loveButton.classList.remove("shake"), 500);
+
+      // Rastgele aşk sözü seç
+      const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+
+      // Söz kutusunu göster
+      quoteBox.textContent = randomQuote;
+      quoteBox.classList.add("show");
+
+      // Arka planı buhula
+      contentWrapper.classList.add("blur");
+
+      // 3 saniye sonra blur'u kaldır ve kartı gizle
+      setTimeout(() => {
+        quoteBox.classList.remove("show");
+        contentWrapper.classList.remove("blur");
+      }, 3000);
     });
-  });
-</script>
-
+  </script>
 </body>
 </html>
