@@ -1,281 +1,176 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ece'mmmmmm 💗💖</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;600&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <title>Benimle Çıkar Mısın?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: url('https://images.unsplash.com/photo-1520975698519-1e0e0b1226f0?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
-      background-size: cover;
-      overflow-x: hidden;
-      color: #fff;
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #ffe0ec, #ffcde1);
+      height: 100%;
+      overflow: hidden;
     }
 
-    /* Sadece içerik kısmını saran ana container */
-    #content-wrapper {
-      background: rgba(0,0,0,0.6);
-      min-height: 100vh;
+    .container {
+      height: 100vh;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
-      padding: 40px 20px;
-      position: relative;
-      z-index: 1;
+      align-items: center;
       text-align: center;
-      transition: filter 0.3s ease;
-    }
-
-    /* Buhar efekti sadece content-wrapper için */
-    #content-wrapper.blur {
-      filter: blur(3px);
+      padding: 1rem;
     }
 
     h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 3.5rem;
-      color: #ffe0f5;
-      text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-      margin-bottom: 20px;
+      font-size: 2.5rem;
+      color: #d63384;
+      animation: fadeIn 2s ease;
     }
 
-    .glass-box {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 20px;
-      padding: 30px;
-      max-width: 700px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-      margin-top: 20px;
-    }
-
-    .glass-box p {
+    .compliment {
       font-size: 1.2rem;
-      line-height: 1.8;
-      color: #fbe9f2;
-    }
-
-    .date-box, .day-counter {
-      margin-top: 30px;
-      background: #ffaad480;
-      padding: 15px 30px;
-      border-radius: 50px;
-      font-size: 1.1rem;
-      font-weight: bold;
-      color: #fff;
-      box-shadow: 0 2px 10px #00000050;
-    }
-
-    /* Aşk sözü kartı */
-    .quote-box {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(255, 170, 180, 0.95);
-      color: #fff;
-      font-size: 1.5rem;
-      font-weight: 700;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
-      padding: 20px 30px;
-      border-radius: 25px;
-      box-shadow: 0 0 20px 10px rgba(255, 182, 193, 0.8);
+      color: #a61e4d;
+      margin-top: 1rem;
       opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.5s ease;
-      max-width: 80vw;
-      z-index: 10001;
-      text-align: center;
-      user-select: none;
+      animation: slideIn 1s forwards;
     }
 
-    .quote-box.show {
-      opacity: 1;
-      pointer-events: auto;
+    .compliment:nth-of-type(2) { animation-delay: 2s; }
+    .compliment:nth-of-type(3) { animation-delay: 3s; }
+    .compliment:nth-of-type(4) { animation-delay: 4s; }
+
+    .buttons {
+      margin-top: 3rem;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+      animation-delay: 5s;
     }
 
     button {
-      margin-top: 30px;
-      margin-bottom: 30px;
-      padding: 12px 25px;
+      padding: 1rem 2rem;
+      margin: 0 1rem;
       font-size: 1rem;
       border: none;
-      background-color: #ff7eb3;
-      border-radius: 25px;
-      color: white;
+      border-radius: 30px;
       cursor: pointer;
-      transition: 0.3s ease;
-      outline: none;
-      user-select: none;
-      position: relative;
-      z-index: 10;
+      transition: 0.3s;
     }
 
-    button:hover { background-color: #ff4f94; }
-
-    /* Buton titreşim animasyonu */
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      20%, 60% { transform: translateX(-8px); }
-      40%, 80% { transform: translateX(8px); }
+    .yes {
+      background-color: #ff4d6d;
+      color: white;
     }
 
-    button.shake {
-      animation: shake 0.5s;
+    .yes:hover {
+      background-color: #e03155;
     }
 
-    /* Kalp Emojisi Yağmuru */
-    .emoji-heart {
+    .no {
+      background-color: transparent;
+      color: #ff4d6d;
+      border: 2px solid #ff4d6d;
+    }
+
+    .no:hover {
+      background-color: #ffe9ee;
+    }
+
+    .result {
+      font-size: 1.6rem;
+      margin-top: 2rem;
+      color: #842029;
+      font-weight: bold;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .hearts {
       position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    .heart {
+      position: absolute;
       top: -50px;
       font-size: 24px;
-      z-index: 0;
-      animation: fall linear infinite;
-      user-select: none;
-      pointer-events: none;
+      color: red;
+      animation: drop 4s linear forwards;
     }
 
-    @keyframes fall {
-      to {
-        transform: translateY(120vh);
-        opacity: 0;
-      }
-    }
-
-    /* ⚡ Ekran Flash Efekti */
-    .flash {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background: white;
-      opacity: 0.7;
-      z-index: 9999;
-      animation: flashAnimation 0.4s ease-out;
-      pointer-events: none;
-    }
-
-    @keyframes flashAnimation {
-      from { opacity: 0.8; }
-      to { opacity: 0; }
+    @keyframes drop {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
     }
   </style>
 </head>
 <body>
-  <div id="content-wrapper">
-    <h1>Aşkımızın En Güzel Sayfası</h1>
 
-    <div class="glass-box">
-      <p>
-        9 Temmuz 2025, saat 23:30.<br>
-        Bir dijital anıydı ama kalbime gerçek bir iz bıraktı.<br>
-        Her satır sana, her saniye sana yazıldı.<br>
-        Ve bu sayfa da… sırf senin için.
-      </p>
-    </div>
+<div class="container">
+  <h1>Sana bir şey diyeceğim...</h1>
+  <p class="compliment">Sen gülün bile kıskanacağı güzelliktesin.</p>
+  <p class="compliment">Sesin huzur, gülüşün terapi gibi.</p>
+  <p class="compliment">Sen yanımda olunca dünya susuyor.</p>
+  <p class="compliment">Seninle her gün bahar gibi.</p>
 
-    <div class="date-box">Tanışma Günümüz: 9 Temmuz 2025 — Saat 23:30</div>
-    <div class="day-counter" id="dayCounter">Tanışalı hesaplanıyor...</div>
-
-    <button id="loveButton">Bana Bir Söz Söyle 💘</button>
-
-    <audio controls autoplay loop>
-      <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3" />
-    </audio>
-<br><br>
-    <footer>© 2025 Narkotik tarafından aşkla kodlandı. 💻💖</footer>
+  <div class="buttons">
+    <button class="yes" onclick="answer(true)">Evet 💖</button>
+    <button class="no" onclick="answer(false)">Hayır 🙁</button>
   </div>
 
-  <!-- Aşk sözü kartı -->
-  <div class="quote-box" id="quoteBox"></div>
+  <div id="result" class="result"></div>
+</div>
 
-  <script>
-    // 💖💗 Kalp yağmuru
-    const emojis = ["💖", "💗"];
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.classList.add("emoji-heart");
-      heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
-      heart.style.fontSize = (Math.random() * 10 + 20) + "px";
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 6000);
+<div class="hearts" id="hearts"></div>
+
+<audio autoplay loop hidden>
+  <source src="https://cdn.pixabay.com/audio/2023/03/13/audio_7092950f04.mp3" type="audio/mp3">
+</audio>
+
+<script>
+  function answer(yes) {
+    const result = document.getElementById('result');
+    result.style.opacity = 1;
+
+    if (yes) {
+      result.innerText = 'Yaşasın! Artık biz bir çiftiz ❤️';
+      startHeartRain();
+    } else {
+      result.innerText = 'Canın sağ olsun 🙃';
     }
-    setInterval(createHeart, 250);
+  }
 
-    // ⏱️ Sayacı güncelle
-    function updateFullCounter() {
-      const startDate = new Date("2025-07-09T23:30:00");
-      const now = new Date();
-      const diff = now - startDate;
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-      const milliseconds = diff % 1000;
-      document.getElementById("dayCounter").textContent =
-        `Tanışalı ${days} gün, ${hours} saat, ${minutes} dk, ${seconds} sn, ${milliseconds.toString().padStart(3, '0')} ms geçti 💘`;
-    }
-    setInterval(updateFullCounter, 40);
-    updateFullCounter();
-
-    // Aşk sözleri dizisi
-    const quotes = [
-      "Senle her saniye başka bir öyküye dönüşüyor.",
-      "Kalbim artık senin Wi-Fi'na bağlı.",
-      "Ellerin yazmasa da, ruhun satır satır içime işliyor.",
-      "Sadece seni düşününce bile gözlerim gülüyor.",
-      "Ruhumun en güzel sayfası sensin.",
-      "Seninle tanıştığım an, zaman durdu…",
-      "Gözlerin benim en huzurlu ekranım.",
-      "Bu kodlar bile seni düşünmeden yazılamıyor.",
-      "Sana yazdığım her satırda bir kalp atışı gizli.",
-      "Sonsuz satır varsa, hepsi sana yazılsın isterim 💗"
-    ];
-
-    // Ekran flash efekti
-    function screenFlash() {
-      const flash = document.createElement("div");
-      flash.classList.add("flash");
-      document.body.appendChild(flash);
-      setTimeout(() => flash.remove(), 400);
-    }
-
-    // Buton ve söz gösterme fonksiyonu
-    const loveButton = document.getElementById("loveButton");
-    const quoteBox = document.getElementById("quoteBox");
-    const contentWrapper = document.getElementById("content-wrapper");
-
-    loveButton.addEventListener("click", () => {
-      // Ekran ışıldasın
-      screenFlash();
-
-      // Butona titreme animasyonu ekle
-      loveButton.classList.add("shake");
-      setTimeout(() => loveButton.classList.remove("shake"), 500);
-
-      // Rastgele aşk sözü seç
-      const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-
-      // Söz kutusunu göster
-      quoteBox.textContent = randomQuote;
-      quoteBox.classList.add("show");
-
-      // Arka planı buhula
-      contentWrapper.classList.add("blur");
-
-      // 3 saniye sonra blur'u kaldır ve kartı gizle
+  function startHeartRain() {
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerText = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = Math.random() * 30 + 20 + 'px';
+      document.getElementById('hearts').appendChild(heart);
       setTimeout(() => {
-        quoteBox.classList.remove("show");
-        contentWrapper.classList.remove("blur");
-      }, 3000);
-    });
-  </script>
+        heart.remove();
+      }, 4000);
+    }, 100);
+  }
+</script>
+
 </body>
 </html>
