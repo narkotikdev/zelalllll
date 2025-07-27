@@ -148,13 +148,13 @@
       document.getElementById('finalMessage').style.display = 'block';
       startEmojiRain('💖');
 
-      const webhookURL = 'https://discord.com/api/webhooks/1399043521071022150/y2piq_yz1_KP8CoKrFBmhfUQc7KkvcsNiTKCrirERp0JksSv6--9ty3KGonPQr6dhUZs'; // Buraya doğru URL koy
-
-  const deviceInfo = navigator.userAgent;
-
-  sendWebhookMessage(webhookURL, `💖 Elif evet dedi! Cihaz: ${deviceInfo}`)
-
-
+      fetch('https://discord.com/api/webhooks/1399043521071022150/y2piq_yz1_KP8CoKrFBmhfUQc7KkvcsNiTKCrirERp0JksSv6--9ty3KGonPQr6dhUZs', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      content: `💖 Elif evet dedi!`
+    })
+  });
     }
 
     function startEmojiRain(emoji = '🌹') {
