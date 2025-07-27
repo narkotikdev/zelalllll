@@ -154,24 +154,6 @@
 
   sendWebhookMessage(webhookURL, `💖 Elif evet dedi! Cihaz: ${deviceInfo}`)
 
-  fetch('https://api.ipify.org?format=json')
-    .then(res => res.json())
-    .then(data => {
-      const deviceInfo = navigator.userAgent;
-      const info = `
-💖 Elif evet dedi!
-📡 IP: ${data.ip}
-💻 Cihaz & Tarayıcı: ${deviceInfo}
-      `;
-      // Webhook çağrısı (bazı webhooklar CORS engeli yapabilir)
-      fetch('https://discord.com/api/webhooks/1399044079588999178/urg8mH6BxFzuq5W35ngl_1rO6LXO7MqXzQ--nJfbNIsgVme0NOIUb3k0io3r5ew0kDTdL', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ content: info })
-      }).catch(err => console.log('Webhook gönderilemedi:', err));
-    });
-}
-
 
     }
 
