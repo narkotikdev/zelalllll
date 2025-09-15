@@ -1,14 +1,842 @@
 <!DOCTYPE html>
 <html lang="tr">
-<head>
+    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💕 Zelal'ım - Sen Benim Hayatımın Aşkısın 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #4facfe 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Floating Hearts Background */
+        .floating-heart {
+            position: fixed;
+            color: rgba(255, 182, 193, 0.3);
+            pointer-events: none;
+            animation: floatUp 8s linear infinite;
+            font-size: 20px;
+        }
+
+        @keyframes floatUp {
+            0% {
+                opacity: 1;
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translateY(-50px) rotate(180deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) rotate(360deg);
+            }
+        }
+
+        /* Click Hearts Animation */
+        .click-heart {
+            position: fixed;
+            color: #e91e63;
+            font-size: 24px;
+            pointer-events: none;
+            z-index: 1000;
+            animation: bounceUp 2s ease-out forwards;
+        }
+
+        @keyframes bounceUp {
+            0% {
+                opacity: 1;
+                transform: translateY(0px) scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translateY(-100px) scale(1.2);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-200px) scale(0.5);
+            }
+        }
+
+        /* Card Styling */
+        .card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: bold;
+            color: white;
+            margin-bottom: 15px;
+            animation: pulse 2s infinite;
+        }
+
+        .header p {
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+        }
+
+        .sparkles {
+            display: inline-block;
+            color: #ffd700;
+            margin: 0 10px;
+            animation: sparkle 1.5s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Counter */
+        .counter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            text-align: center;
+        }
+
+        .counter-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        .counter-number {
+            font-size: clamp(2rem, 6vw, 3rem);
+            font-weight: bold;
+            color: white;
+            line-height: 1;
+        }
+
+        .counter-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        /* Messages */
+        .message-container {
+            text-align: center;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .romantic-message {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 500;
+            padding: 0 20px;
+            animation: messageSlide 4s ease-in-out infinite;
+        }
+
+        @keyframes messageSlide {
+            0%, 20% { opacity: 0; transform: translateY(20px); }
+            30%, 70% { opacity: 1; transform: translateY(0); }
+            80%, 100% { opacity: 0; transform: translateY(-20px); }
+        }
+
+        /* Love Reasons Grid */
+        .love-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+
+        .love-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .love-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        .love-item p {
+            color: rgba(255, 255, 255, 0.95);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .heart-icon {
+            color: #ff69b4;
+            font-size: 1.2rem;
+        }
+
+        /* Memory Cards */
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .memory-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .memory-card:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        .memory-emoji {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .memory-date {
+            font-weight: bold;
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .memory-text {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* DÜZELTILMIŞ FOTOĞRAF GALERİSİ */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .photo-container {
+            position: relative;
+            width: 100%;
+            height: 300px; /* Sabit yükseklik */
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .photo-container:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .gallery-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Fotoğrafı kare alana sığdır */
+            object-position: center; /* Merkeze hizala */
+            border-radius: 20px;
+            transition: transform 0.4s ease;
+            display: block;
+        }
+
+        /* Fotoğraf yüklenmezse gösterilecek placeholder */
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .photo-placeholder:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .camera-icon {
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 15px;
+        }
+
+        .placeholder-text {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 0 20px;
+            line-height: 1.4;
+        }
+
+        .photo-container:hover .gallery-photo {
+            transform: scale(1.05);
+        }
+
+        .photo-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: center;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .photo-container:hover .photo-overlay {
+            transform: translateY(0);
+        }
+
+        .photo-heart {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+            transform: scale(0.8);
+        }
+
+        .photo-container:hover .photo-heart {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Heart Button */
+        .heart-button {
+            background: linear-gradient(45deg, #e91e63, #f44336);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(233, 30, 99, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        .heart-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 25px rgba(233, 30, 99, 0.4);
+        }
+
+        /* Titles */
+        .section-title {
+            font-size: clamp(1.5rem, 5vw, 2.2rem);
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .title-icon {
+            font-size: 1.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .footer p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .footer .subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive - MOBİL İYİLEŞTİRMELER */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .card {
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+            
+            .floating-heart {
+                font-size: 12px !important;
+            }
+
+            .photo-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
+
+            .photo-container {
+                height: 250px; /* Mobilde daha küçük */
+            }
+
+            .photo-heart {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+                top: 15px;
+                right: 15px;
+            }
+
+            .photo-overlay {
+                padding: 20px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .photo-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .photo-container {
+                height: 280px;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Fotoğraf yükleme hatası için stil */
+        .gallery-photo[src=""], .gallery-photo:not([src]) {
+            display: none;
+        }
+
+        /* Loading state */
+        .gallery-photo {
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-photo.loaded {
+            opacity: 1;
+        }
+    </style>
     <title>💔</title>
 </head>
 <body>
+    <!-- Floating Hearts Background -->
+    <div id="floatingHearts"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="card header">
+            <h1>💕 Zelal'im 💕</h1>
+            <p>Sen benim hayatımın aşkısın</p>
+            <div style="margin-top: 20px;">
+                <span class="sparkles">✨</span>
+                <span class="sparkles">💖</span>
+                <span class="sparkles">✨</span>
+            </div>
+        </header>
+
+        <!-- Love Counter -->
+        <section class="card">
+            <h2 class="section-title">
+                <span class="title-icon">📅</span>
+                Birlikte Geçirdiğimiz Zaman
+            </h2>
+            <div class="counter-grid">
+                <div class="counter-item">
+                    <div class="counter-number" id="days">0</div>
+                    <div class="counter-label">Gün</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number" id="hours">0</div>
+                    <div class="counter-label">Saat</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number" id="minutes">0</div>
+                    <div class="counter-label">Dakika</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number" id="seconds">0</div>
+                    <div class="counter-label">Saniye</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Romantic Messages -->
+        <section class="card">
+            <h2 class="section-title">💌 Sana Özel Mesajım</h2>
+            <div class="message-container">
+                <p class="romantic-message" id="romanticMessage">Zelal, sen benim hayatımın en güzel rengisisin 🌈</p>
+            </div>
+        </section>
+
+        <!-- Why I Love You -->
+        <section class="card">
+            <h2 class="section-title">💝 Seni Neden Bu Kadar Seviyorum?</h2>
+            <div class="love-grid" id="loveReasons"></div>
+        </section>
+
+        <!-- Special Memories -->
+        <section class="card">
+            <h2 class="section-title">
+                <span class="title-icon">📷</span>
+                Özel Anılarımız
+            </h2>
+            <div class="memory-grid" id="specialMemories"></div>
+        </section>
+                
+                <!-- Fotoğraf 1 -->
+            <section class="card">
+            <h2 class="section-title">📸 Fotoğraf Galerimiz</h2>
+            <div class="photo-grid">
+                
+                <!-- Fotoğraf 1 -->
+                <div class="photo-container">
+                    <img src="img/foto1.jpg" alt="Bizim en güzel anımız" class="gallery-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="photo-placeholder" style="display: none;">
+                        <div class="camera-icon">📷</div>
+                        <p class="placeholder-text">foto1.jpg dosyasını buraya ekleyin 💕<br><small>En sevdiğiniz fotoğrafı koyun!</small></p>
+                    </div>
+                    <div class="photo-heart">💕</div>
+                    <div class="photo-overlay">💖 En güzel anımız</div>
+                </div>
+                
+                <!-- Fotoğraf 2 -->
+                <div class="photo-container">
+                    <img src="img/foto2.jpg" alt="Mutlu günlerimiz" class="gallery-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="photo-placeholder" style="display: none;">
+                        <div class="camera-icon">📷</div>
+                        <p class="placeholder-text">foto2.jpg dosyasını buraya ekleyin 💕<br><small>Mutlu anlarınızı paylaşın!</small></p>
+                    </div>
+                    <div class="photo-heart">🌹</div>
+                    <div class="photo-overlay">🌹 Mutlu günlerimiz</div>
+                </div>
+                
+                <!-- Fotoğraf 3 -->
+                <div class="photo-container">
+                    <img src="img/foto3.jpg" alt="Romantik anlarımız" class="gallery-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="photo-placeholder" style="display: none;">
+                        <div class="camera-icon">📷</div>
+                        <p class="placeholder-text">foto3.jpg dosyasını buraya ekleyin 💕<br><small>Romantik anlarınız burada!</small></p>
+                    </div>
+                    <div class="photo-heart">🥰</div>
+                    <div class="photo-overlay">🥰 Birlikte olan günler</div>
+                </div>
+                
+                <!-- Fotoğraf 4 -->
+                <div class="photo-container">
+                    <img src="img/foto4.jpg" alt="Birlikte olan günler" class="gallery-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="photo-placeholder" style="display: none;">
+                        <div class="camera-icon">📷</div>
+                        <p class="placeholder-text">foto4.jpg dosyasını buraya ekleyin 💕<br><small>Birlikte geçirdiğiniz güzel günler!</small></p>
+                    </div>
+                    <div class="photo-heart">✨</div>
+                    <div class="photo-overlay">✨ Romantik anlarımız</div>
+                </div>
+                
+                <!-- Fotoğraf 5 -->
+                <div class="photo-container">
+                    <img src="img/foto5.jpg" alt="Sevgi dolu anlar" class="gallery-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="photo-placeholder" style="display: none;">
+                        <div class="camera-icon">📷</div>
+                        <p class="placeholder-text">foto5.jpg dosyasını buraya ekleyin 💕<br><small>Sevgi dolu anlarınız!</small></p>
+                    </div>
+                    <div class="photo-heart">💞</div>
+                    <div class="photo-overlay">💞 Sevgi dolu anlar</div>
+                </div>
+                
+                <!-- Fotoğraf 6 -->
+                <div class="photo-container">
+                    <img src="img/foto6.jpg" alt="Sonsuza kadar" class="gallery-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="photo-placeholder" style="display: none;">
+                        <div class="camera-icon">📷</div>
+                        <p class="placeholder-text">foto6.jpg dosyasını buraya ekleyin 💕<br><small>Sonsuza kadar birlikte!</small></p>
+                    </div>
+                    <div class="photo-heart">🌟</div>
+                    <div class="photo-overlay">🌟 Sonsuza kadar</div>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- Heart Button -->
+        <section class="card" style="text-align: center;">
+            <button class="heart-button" onclick="createHearts()">
+                💕 Zelal'ime Kalp Gönder 💕
+            </button>
+            <p style="color: rgba(255, 255, 255, 0.8); margin-top: 15px; font-size: 0.9rem;">
+                Butona tıkla ve kalplerin uçuşunu izle!
+            </p>
+        </section>
+
+        <!-- Footer -->
+        <footer class="card footer">
+            <p>💞 Sonsuz Sevgilerimle, Serhat 💞</p>
+            <p class="subtitle">Sen benim her şeyimsin Zelal 🌹</p>
+        </footer>
+    </div>
+
+    <script>
+        // Sevgili olduğunuz tarih
+        const loveStartDate = new Date('2025-08-24');
+
+        // Romantik mesajlar
+        const romanticMessages = [
+            "Zelal, sen benim hayatımın en güzel rengisisin 🌈",
+            "Her gün seni daha çok seviyorum 💕",
+            "Gülüşün bütün kederlerimi unutturuyor ✨",
+            "Sen varken hayat ne kadar da güzel 🌸",
+            "Kalbimde sadece sen varsın 💖",
+            "Seninle her an bir rüya gibi 🌙",
+            "Gözlerin benim için en güzel yıldızlar ⭐",
+            "Sen benim en büyük şansımsın 🍀"
+        ];
+
+        // Neden seviyorum listesi
+        const whyILoveYou = [
+            "Çünkü gülüşün güneş gibi ışık saçıyor",
+            "Çünkü kalbin melek kadar temiz",
+            "Çünkü varlığın beni huzurla dolduruyor",
+            "Çünkü sen eşsiz ve muhteşemsin",
+            "Çünkü seninle her şey daha güzel",
+            "Çünkü beni olduğum gibi seviyorsun",
+            "Çünkü hayallerimi gerçekleştiriyorsun",
+            "Çünkü sen benim ruh ikizimsin"
+        ];
+
+        // Özel anılar
+        const specialMemories = [
+            {
+                date: "24 Ağustos 2025",
+                memory: "Sevgili olduğumuz o muhteşem gün 💕",
+                emoji: "💑"
+            },
+            {
+                date: "8 Ağustos 2025",
+                memory: "Konuşmaya başladığımız o mükemmel gün ❤️",
+                emoji: "💝"
+            },
+            {
+                date: "23 Mayıs",
+                memory: "İlk karşılaştığımız o müthiş gün 🥰",
+                emoji: "💘"
+            },
+            {
+                date: "Her gün",
+                memory: "Seninle geçirdiğim her an özel 🌟",
+                emoji: "🌅"
+            }
+        ];
+
+        // Zaman sayacını güncelle
+        function updateCounter() {
+            const now = new Date();
+            const diff = now - loveStartDate;
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+        }
+
+        // Romantik mesajları döndür
+        let currentMessageIndex = 0;
+        function rotateMessages() {
+            const messageElement = document.getElementById('romanticMessage');
+            messageElement.textContent = romanticMessages[currentMessageIndex];
+            currentMessageIndex = (currentMessageIndex + 1) % romanticMessages.length;
+        }
+
+        // Floating hearts oluştur
+        function createFloatingHearts() {
+            const container = document.getElementById('floatingHearts');
+            
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.textContent = '💖';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 10 + 's';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                container.appendChild(heart);
+            }
+        }
+
+        // Tıklama kalpleri oluştur
+        function createHearts() {
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'click-heart';
+                    heart.textContent = '💕';
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.bottom = '20%';
+                    document.body.appendChild(heart);
+                    
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 2000);
+                }, i * 100);
+            }
+        }
+
+        // Neden seviyorum listesini oluştur
+        function createLoveReasons() {
+            const container = document.getElementById('loveReasons');
+            
+            whyILoveYou.forEach(reason => {
+                const item = document.createElement('div');
+                item.className = 'love-item';
+                item.innerHTML = `
+                    <p>
+                        <span class="heart-icon">💕</span>
+                        ${reason}
+                    </p>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        // Özel anıları oluştur
+        function createSpecialMemories() {
+            const container = document.getElementById('specialMemories');
+            
+            specialMemories.forEach(memory => {
+                const card = document.createElement('div');
+                card.className = 'memory-card';
+                card.innerHTML = `
+                    <div class="memory-emoji">${memory.emoji}</div>
+                    <div class="memory-date">${memory.date}</div>
+                    <div class="memory-text">${memory.memory}</div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Fotoğraf galerisini oluştur
+        function createPhotoGallery() {
+            const container = document.getElementById('photoGallery');
+            
+            for (let i = 0; i < 6; i++) {
+                const placeholder = document.createElement('div');
+                placeholder.className = 'photo-placeholder';
+                placeholder.innerHTML = `
+                    <div class="camera-icon">📷</div>
+                    <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.8rem; text-align: center; padding: 0 10px;">
+                        Fotoğraflarımızı buraya ekleyeceğiz 💕
+                    </p>
+                `;
+                container.appendChild(placeholder);
+            }
+        }
+
+        // Sayfa yüklendiğinde çalışacak fonksiyonlar
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCounter();
+            createFloatingHearts();
+            createLoveReasons();
+            createSpecialMemories();
+            createPhotoGallery();
+            
+            // Sayaçları her saniye güncelle
+            setInterval(updateCounter, 1000);
+            
+            // Mesajları 4 saniyede bir döndür
+            setInterval(rotateMessages, 4000);
+        });
+    </script>
     <h1>
         💔 24.08.2025 - 11.09.2025 💔
     </h1>
 </body>
 </html>
-
